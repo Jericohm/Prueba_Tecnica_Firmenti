@@ -15,20 +15,6 @@ app.listen(port, ()=>{
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.use((_req, res, next)=>{
-    res.header('Access-Control-Allow-Origin','*');
-    res.header('Access-Control-Allow-Headers',
-    'Authorization');
-    res.header('X-API-KEY', 'Origin');
-    res.header('Accept', 'Access-Control-Allow-Request-Method');
-    res.header('X-Requested-With', 'Content-type');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE, PATCH');
-    res.header('Allow', 'GET');
-    res.header('POST', 'DELETE');
-    res.header('PATCH');
-    next();
-});
-
 app.use('/', rutas);
 
 // CONEXIÓN MONGODB

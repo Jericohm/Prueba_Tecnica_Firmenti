@@ -39,11 +39,12 @@ router.post('/', (req: Request, res: Response, _next: NextFunction) => {
   });
 });
 
-router.put('/:nombre', (req: Request, _res: Response, _next: NextFunction) => {
-  const body = req.body;
-  Producto.updateOne({'nombre':req.params.nombre},
-  body);
-});
+router.put('/:nombre', async(req: Request, res: Response, _next: NextFunction) => {
+  const nombreP = req.params.nombre;
+  /*const resultado = */await Producto.replaceOne({nombre: nombreP}, req.body);
+  res.json({nombreP});
+
+})
 
 router.delete('/:nombre', (req: Request, res: Response, _next: NextFunction) => {
   Producto.deleteOne({'nombre':req.params.nombre}, (err)=>{
